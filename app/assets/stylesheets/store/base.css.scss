@@ -1,3 +1,39 @@
 body{
-  background-color: white;
+  background-color: #fff;
+  ul#products li {
+    margin-bottom: 30px;
+    .product-image {
+      &:hover {
+        border:1px solid #a20000;
+      }
+    }
+    a.info {
+      border-bottom: none;
+      height: auto;
+      color:#666;
+      font-size:1.2em;
+      text-align:left;
+    }
+    .price {
+      color:#a20000;
+      font-size:1.2em;
+      text-align:left;
+    }
+  }
+  #sidebar {
+    #taxonomies {
+      .taxonomy-root {
+        color:#444;
+      }
+      ul.taxons-list {
+        margin: 0 0 20px 0;
+        padding: 0;
+        li {
+          list-style:none;
+          border-bottom:1px solid #eee;
+          padding: 3px 0;
+        }
+      }
+    }
+  }
 }

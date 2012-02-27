@@ -1,0 +1,29 @@
+<div data-hook="admin_user_edit_form_header">
+  <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
+  <h1><%= t(:editing_user) %></h1>
+</div>
+
+<div data-hook="admin_user_edit_form">
+  <%= form_for [:admin, @user] do |f| %>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+
+    <div data-hook="admin_user_edit_form_button">
+      <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+    </div>
+  <% end %>
+</div><h2><%= t('api.access') %></h2>
+
+<% if @user.authentication_token.present? %>
+  <p><strong><%= t('api.key') %></strong> <%= @user.authentication_token %></p>
+  <%= form_tag spree.clear_api_key_admin_user_path(@user), :method => :put do %>
+    <%= button t('api.clear_key') %>
+  <% end %>
+  <%= form_tag spree.generate_api_key_admin_user_path(@user), :method => :put do %>
+    <%= button t('api.regenerate_key') %>
+  <% end %>
+<% else %>
+  <p><%= t('api.no_key') %></p>
+  <%= form_tag spree.generate_api_key_admin_user_path(@user), :method => :put do %>
+    <%= button t('api.generate_key') %>
+  <% end %>
+<% end %>
